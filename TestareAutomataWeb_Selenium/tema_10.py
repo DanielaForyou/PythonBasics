@@ -9,7 +9,6 @@ freestyle ca sa incepeti sa ganditi si singuri niste scenarii de test).
 Bine de stiut: o functie de test este echivalentul unui test case
 Mai multe aici:
 https://www.tutorialspoint.com/software_testing_dictionary/test_case.htm
-
 https://www.phptravels.net/
 http://automationpractice.com/index.php
 https://formy-project.herokuapp.com/
