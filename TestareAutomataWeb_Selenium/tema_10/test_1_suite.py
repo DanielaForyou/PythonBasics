@@ -16,3 +16,18 @@ https://the-internet.herokuapp.com/
 https://www.techlistic.com/p/selenium-practice-form.html
 Sau puteti alege voi ce pagina doriti
 '''
+import unittest
+from html_test_runner import HTMLTestRunner
+
+from TestareAutomataWeb_Selenium.tema_10.test_alerts import Alerts
+from TestareAutomataWeb_Selenium.tema_10.test_edge import Edge
+
+
+class TestSuite(unittest.TestSuite):
+    def test_suite(self):
+        lista_teste=unittest.TestSuite()
+        lista_teste.addTests([
+            unittest.TestLoader.loadTestsFromTestCase(Edge),
+            unittest.TestLoader.loadTestsFromTestCase(Alerts),
+
+        ])
