@@ -47,6 +47,8 @@ class Login(unittest.TestCase):
      ● Test 1
     - Verifică dacă noul url e corect
     '''
+
+    @unittest.skip
     def test_url(self):
         actual = self.chrome.current_url
         expected = 'https://the-internet.herokuapp.com/login'
@@ -57,6 +59,8 @@ class Login(unittest.TestCase):
     ● Test 2
     - Verifică dacă page title e corect
     '''
+
+    @unittest.skip
     def test_title(self):
         actual=self.chrome.title
         expected='The Internet'
@@ -65,6 +69,8 @@ class Login(unittest.TestCase):
     ● Test 3
     - Verifică textul de pe elementul xpath=//h2 e corect
     '''
+
+    @unittest.skip
     def test_element_corect(self):
         actual=self.chrome.find_element(By.XPATH,'//h2').text
         expected='Login Page'
@@ -73,6 +79,8 @@ class Login(unittest.TestCase):
     ● Test 4
     - Verifică dacă butonul de login este displayed
     '''
+
+    @unittest.skip
     def test_login_displayed(self):
         elem=self.chrome.find_element(*self.LOGIN_BUTTON)
         self.assertTrue(elem.is_displayed(),'Butonul Login nu e pe pagina')
@@ -81,6 +89,8 @@ class Login(unittest.TestCase):
     ● Test 5
     - Verifică dacă atributul href al linkului ‘Elemental Selenium’ e corect
     '''
+
+    @unittest.skip
     def test_link_corect(self):
         actual=self.chrome.find_element(By.LINK_TEXT,'Elemental Selenium').get_attribute('href')
         expected='http://elementalselenium.com/'
@@ -91,6 +101,8 @@ class Login(unittest.TestCase):
     - Click login
     - Verifică dacă eroarea e displayed
     '''
+
+    @unittest.skip
     def test_error(self):
         self.chrome.find_element(*self.LOGIN_BUTTON).click()
         eroare=self.chrome.find_element(*self.ERROR)
@@ -105,6 +117,8 @@ class Login(unittest.TestCase):
     self.assertTrue(expected in actual, 'Error message text is
     incorrect')
     '''
+
+    @unittest.skip
     def test_mesaj_de_eroare_corect(self):
         self.chrome.find_element(*self.USER).send_keys('hi_darling')
         self.chrome.find_element(*self.PASSWORD).send_keys('1111')
@@ -120,6 +134,8 @@ class Login(unittest.TestCase):
     - Apasă x la eroare
     - Verifică dacă eroarea a dispărut
     '''
+
+    @unittest.skip
     def test_dispare_eroarea(self):
         self.chrome.find_element(*self.LOGIN_BUTTON).click()
         self.chrome.find_element(By.CLASS_NAME,'close').click()
@@ -135,6 +151,8 @@ class Login(unittest.TestCase):
     Password)
     - Aici e ok să avem 2 asserturi
     '''
+
+    @unittest.skip
     def test_text_corect(self):
         lista_elemente=self.chrome.find_elements(By.XPATH,'//label')
         actual_1=lista_elemente[0].text
@@ -153,6 +171,8 @@ class Login(unittest.TestCase):
     - Verifică dacă elementul cu clasa=’flash succes’ este displayed
     - Verifică dacă mesajul de pe acest element CONȚINE textul ‘secure area!’
     '''
+
+    # @unittest.skip
     def test_login(self):
         self.chrome.find_element(*self.USER).send_keys('tomsmith')
         self.chrome.find_element(*self.PASSWORD).send_keys('SuperSecretPassword!')
@@ -171,6 +191,8 @@ class Login(unittest.TestCase):
     - Click logout
     - Verifică dacă ai ajuns pe https://the-internet.herokuapp.com/login
     '''
+
+    # @unittest.skip
     def test_logout(self):
         self.chrome.find_element(*self.USER).send_keys('tomsmith')
         self.chrome.find_element(*self.PASSWORD).send_keys('SuperSecretPassword!')
@@ -194,6 +216,8 @@ class Login(unittest.TestCase):
     ‘Nu am reușit să găsesc parola’
     ‘Parola secretă este [parola]’
     '''
+
+    @unittest.skip
     def test_brute_force_password_hacking(self):
         text=self.chrome.find_element(By.XPATH,'//h4').text
         lista_password=text.split()

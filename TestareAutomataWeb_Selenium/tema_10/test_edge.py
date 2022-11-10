@@ -26,7 +26,7 @@ class Edge(unittest.TestCase):
     # Testare negativa = tip de testare in care verificam comportamentul sistemului cu inputuri pe care ar trebui sa nu le poata procesa
     # Testare functionala = tip de testare in care verificam daca sistemul isi indeplineste functiile
     # Testare non-functionala = tip de testare in care verificam CAT DE BINE isi indeplineste sistemul functiile (performance, stress testing, load testing, volume testing, usability testing, localization testing, compatibility testing etc)
-
+    @unittest.skip
     def test_login_user_is_correct(self):
         self.driver.find_element(*self.USERNAME).send_keys("tomsmith")
         sleep(3)
@@ -42,6 +42,7 @@ class Edge(unittest.TestCase):
         sleep(3)
         assert actual_message == expected_message, "Error: Logarea nu s-a facut cu succes"
 
+    @unittest.skip
     def test_logout(self):
         self.driver.find_element(*self.USERNAME).send_keys("tomsmith")
         self.driver.find_element(*self.PASSWORD).send_keys("SuperSecretPassword!")

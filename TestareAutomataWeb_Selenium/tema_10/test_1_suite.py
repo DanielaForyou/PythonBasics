@@ -11,23 +11,45 @@ Mai multe aici:
 https://www.tutorialspoint.com/software_testing_dictionary/test_case.htm
 https://www.phptravels.net/
 http://automationpractice.com/index.php
-https://formy-project.herokuapp.com/
 https://the-internet.herokuapp.com/
 https://www.techlistic.com/p/selenium-practice-form.html
 Sau puteti alege voi ce pagina doriti
 '''
-import unittest
-from html_test_runner import HTMLTestRunner
 
+import unittest  #  am importat toata libraria unittest
+import HTMLTestRunner
+
+from TestareAutomataWeb_Selenium.tema_09 import Login
+from TestareAutomataWeb_Selenium.tema_10.test_2_firefox import Firefox
+from TestareAutomataWeb_Selenium.tema_10.test_context_menu import ContextMenu
+from TestareAutomataWeb_Selenium.tema_10.test_keys import Keyboard
+from TestareAutomataWeb_Selenium.tema_10.test_auth import Authentication
 from TestareAutomataWeb_Selenium.tema_10.test_alerts import Alerts
 from TestareAutomataWeb_Selenium.tema_10.test_edge import Edge
 
 
-class TestSuite(unittest.TestSuite):
+class TestSuite(unittest.TestCase):  # pentru ca am importat toata libraria este nevoie sa specificam in fata clasei TestCase
+    # libraria din care sa fie extrasa
+    # Daca importam doar libraria, sistemul va avea doar adresa de identificare a librariei, nu si a clasei TestCase
+ # Suita de teste = un set de teste care pot fi rulate in acelasi timp
+
     def test_suite(self):
         lista_teste=unittest.TestSuite()
         lista_teste.addTests([
-            unittest.TestLoader.loadTestsFromTestCase(Edge),
-            unittest.TestLoader.loadTestsFromTestCase(Alerts),
+            unittest.defaultTestLoader.loadTestsFromTestCase(Edge),
+            unittest.defaultTestLoader.loadTestsFromTestCase(Alerts),
+            unittest.defaultTestLoader.loadTestsFromTestCase(Authentication),
+            unittest.defaultTestLoader.loadTestsFromTestCase(Keyboard),
+            unittest.defaultTestLoader.loadTestsFromTestCase(ContextMenu),
+            unittest.defaultTestLoader.loadTestsFromTestCase(Login),
+            unittest.defaultTestLoader.loadTestsFromTestCase(Firefox),
 
         ])
+        runner = HTMLTestRunner.HTMLTestRunner \
+                (
+                combine_reports=True,
+                report_title='TestReport',
+                report_name='Smoke Test Result'
+            )
+
+        runner.run(lista_teste)

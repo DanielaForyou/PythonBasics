@@ -30,7 +30,7 @@ class Alerts(unittest.TestCase):
     def tearDown(self) -> None:
         self.chrome.quit()
 
-    @unittest.skip
+    # @unittest.skip
     def test_alert(self):
         self.chrome.find_element(*self.ALERT).click()
         sleep(2)
