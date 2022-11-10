@@ -1,11 +1,10 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.edge.service import Service as EdgeService
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 
 class Browser():
-	s = Service(ChromeDriverManager().install())
-	driver = webdriver.Chrome(service=s)
+	driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
 	driver.implicitly_wait(10)
 	driver.set_page_load_timeout(10)
 	driver.maximize_window()

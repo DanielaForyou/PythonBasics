@@ -7,7 +7,7 @@ from browser import Browser
 
 
 class Base_page(Browser):
-		COOKIES_ACCEPT_BUTTON = (By.ID,"gdpr-banner-accept")
+		# COOKIES_ACCEPT_BUTTON = (By.ID,"gdpr-banner-accept")
 		def wait_and_click_element_by_selector(self,by,selector):
 				WebDriverWait(self.driver,20).until(EC.presence_of_element_located((by,selector)))
 				self.driver.find_element(by,selector).click()
@@ -23,3 +23,7 @@ class Base_page(Browser):
 		def verify_text_on_elem_by_selector(self,by,selector,expected):
 				actual = self.driver.find_element(by,selector).text
 				assert actual == expected,"Error: text on element is incorrect"
+
+		def verify_element_is_displayed(self,by,selector):
+			actual=self.driver.find_element(by,selector)
+			assert actual.is_displayed()==True, 'Elementul nu se afla pe pagina'
